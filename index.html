@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quiz!</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- CSS only -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="wrapper" class="time-highscore-wrap">
+      <div id="high-score" class="high-score-style">
+        <a href="#">Veiw test high scores</a>
+      </div>
+      <div id="timer" class="timer-style">
+        30 seconds left in the test
+      </div>
+    </div>
+    <div id="startBtnWrapper" class="start-btn-wrapper">
+      <h1 id="startTitle" class="title">Are you ready to start the test?</h1>
+      <button
+        id="startBtn"
+        class="btn btn-primary btn-lg btn-block start-button"
+      >
+        Click to start test!
+      </button>
+    </div>
+    <div id="test" class="test-content hide">
+      <div id="question" class="question-title">Question</div>
+      <button type="button" class="btn btn-primary btn-lg btn-block" id="A">
+        A
+      </button>
+      <button type="button" class="btn btn-primary btn-lg btn-block" id="B">
+        B
+      </button>
+      <button type="button" class="btn btn-primary btn-lg btn-block" id="C">
+        C
+      </button>
+      <button type="button" class="btn btn-primary btn-lg btn-block" id="D">
+        D
+      </button>
+      <div id="result"></div>
+    </div>
+    <div id="submit-wrapper" class="time-highscore-wrap hide">
+      <div id="high-score" class="high-score-style">
+        <a href="#">Veiw test high scores</a>
+      </div>
+    </div>
+    <div id="subBtnWrapper" class="submit-btn-wrapper hide">
+      <h1 id="startTitle" class="score-title">Your score is</h1>
+      <input
+        id="submit-name"
+        class="form-control form-control-lg submit-name"
+        type="text"
+        placeholder="Name..."
+      />
+      <button id="subBtn" class="btn btn-primary btn-lg btn-block">
+        Submit Score!
+      </button>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

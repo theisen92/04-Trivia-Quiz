@@ -1,8 +1,12 @@
-# Password Generator
+# Trivia question quiz
 
 ## Live site:
 
-https://theisen92.github.io/03-Week-Homework/
+Read Me:
+https://theisen92.github.io/04-Week-Homework/
+
+Quiz:
+https://theisen92.github.io/04-Week-Homework/quiz.html
 
 ## Usage
 

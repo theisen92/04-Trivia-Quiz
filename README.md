@@ -12,6 +12,9 @@ https://theisen92.github.io/04-Week-Homework/quiz.html
 
 Trivia question quiz and can be used for learning fun facts and challange yourself to see if you can beat you previous score
 
+I know in the homework it says to do a quiz about coding, but I felt like that is limited to programmers and that trivia questions are more universal
+Hopefully that's okay!
+
 ## Credits
 
 I primarily used the information from class activities and MDN Developer for resources. Then Also looked up some examples of using object functions on full stack and watched some YouTube videos of similar projects

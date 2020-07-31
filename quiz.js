@@ -1,6 +1,9 @@
-var timer = document.getElementById("timer");
+//Start button vars
 var startWrapper = document.getElementById("startBtnWrapper");
 var startBtn = document.getElementById("startBtn");
+var highScore = document.getElementById("high-score");
+
+//Test vars
 var test = document.getElementById("test");
 var quizQuestion = document.getElementById("question");
 var optionA = document.getElementById("A");
@@ -8,11 +11,22 @@ var optionB = document.getElementById("B");
 var optionC = document.getElementById("C");
 var optionD = document.getElementById("D");
 var result = document.getElementById("result");
-var submit = document.getElementById("submit-wrapper");
+//Submit vars
 var submitBtn = document.getElementById("subBtnWrapper");
+var submitTitle = document.getElementById("submit-title");
+var score = JSON.parse(localStorage.getItem("score"));
+var subName = document.getElementById("submit-name");
+var subBtn = document.getElementById("subBtn");
 
+//Score and name store
+var scoreStore = [];
+var nameStore = [];
+
+//Timer vars
+var timer = document.getElementById("timer");
 var secLeft = 30;
-var countDown;
+
+//Question list and index vars
 var currentIndex = 0;
 
 var listQuestions = [
@@ -60,25 +74,22 @@ var listQuestions = [
 
 var lastQuestion = listQuestions.length - 1;
 
+//Timer function
 function testTimer() {
   test.removeAttribute("class", "hide");
   startWrapper.setAttribute("class", "hide");
+  highScore.setAttribute("class", "hide");
   var countDown = setInterval(function () {
     secLeft--;
     timer.textContent = secLeft + " seconds left in the test";
+    //If you run out of time
     if (secLeft <= 0) {
       clearInterval(countDown);
-      alert(
-        "Sorry time ran out! So you don't get to put in a highscore because... well... you didn't really get a \"score\", but you can try again!"
-      );
-      window.location.reload(true);
     }
   }, 1000);
-  return countDown;
 }
 
-var currentIndex = 0;
-
+//Test question function
 function currentQuestion() {
   var q = listQuestions[currentIndex];
   question.textContent = q.question;
@@ -88,41 +99,63 @@ function currentQuestion() {
   optionD.textContent = q.optionD;
 }
 
+//When clicking on the test options
 test.addEventListener("click", function (event) {
   event.preventDefault();
   if (event.target.matches("button") === true) {
     console.log(event.target.textContent);
   }
+  //Getting the question correct
   if (event.target.textContent == listQuestions[currentIndex].answer) {
     result.textContent = "You got it Correct!";
     setInterval(function () {
       result.textContent = "";
     }, 2000);
     secLeft = secLeft + 5;
-    console.log(secLeft);
-  } else {
+  }
+  //Getting the question wrong
+  else {
     result.textContent = "Sorry, your answer is Wrong!";
     setInterval(function () {
       result.textContent = "";
     }, 2000);
     secLeft = secLeft - 5;
-    console.log(secLeft);
   }
+
+  //Going to the next question
   if (currentIndex < lastQuestion) {
     currentIndex++;
     currentQuestion();
-  } else {
-    clearInterval(countDown);
-    localStorage.setItem("Score", secLeft);
-    console.log(secLeft);
+  }
+  //End of test
+  else {
+    //End of quiz
     test.setAttribute("class", "hide");
     timer.setAttribute("class", "hide");
-    submit.removeAttribute("class", "hide");
     submitBtn.removeAttribute("class", "hide");
+    scoreStore.push(secLeft);
+    localStorage.setItem("score", JSON.stringify(scoreStore));
+    console.log(secLeft);
   }
 });
 
+//Clicking the start button
 startBtn.addEventListener("click", testTimer);
+
+//Showing the current question
 currentQuestion();
+
+//Submit function
+submitTitle.textContent = `Your score is ${secLeft}`;
+
+subBtn.addEventListener("click", function () {
+  var nameValue = subName.value;
+
+  if (nameValue !== null) {
+    nameStore.push(nameValue);
+    localStorage.setItem("name", JSON.stringify(nameStore));
+    window.location.href = "./high-scores.html";
+  }
+});
 
 // https://thoughtcatalog.com/kelly-peacock/2020/04/multiple-choice-trivia-questions-and-answers/

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- CSS only -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <title>Quiz Scores</title>
+  </head>
+  <div id="submit-wrapper" class="time-highscore-wrap">
+    <div id="high-score" class="high-score-style">
+      <a href="./high-scores.html" class="disabled">Veiw Quiz Scores</a>
+    </div>
+    <div id="high-score" class="back-quiz-style">
+        <a href="./quiz.html" class="disabled">Go back to Quiz </a>
+      </div>
+  </div>
+    <div class="table-wrap">
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Score</th>
+            </tr>
+            </thead>
+            <tbody id="high-score-list">
+            </tbody>
+        </table>
+    </div>
+    <button id="clearBtn" class="btn btn-primary btn-lg btn-block">
+        Clear scores
+      </button>
+  <script src="./high-score.js"></script>
+  </body>
+</html>

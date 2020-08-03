@@ -11,20 +11,17 @@ var optionB = document.getElementById("B");
 var optionC = document.getElementById("C");
 var optionD = document.getElementById("D");
 var result = document.getElementById("result");
+
 //Submit vars
 var submitBtn = document.getElementById("subBtnWrapper");
 var submitTitle = document.getElementById("submit-title");
-var score = JSON.parse(localStorage.getItem("score"));
 var subName = document.getElementById("submit-name");
 var subBtn = document.getElementById("subBtn");
-
-//Score and name store
-var scoreStore = [];
-var nameStore = [];
 
 //Timer vars
 var timer = document.getElementById("timer");
 var secLeft = 30;
+var countDown;
 
 //Question list and index vars
 var currentIndex = 0;
@@ -79,12 +76,14 @@ function testTimer() {
   test.removeAttribute("class", "hide");
   startWrapper.setAttribute("class", "hide");
   highScore.setAttribute("class", "hide");
-  var countDown = setInterval(function () {
+  countDown = setInterval(function () {
     secLeft--;
     timer.textContent = secLeft + " seconds left in the test";
     //If you run out of time
     if (secLeft <= 0) {
       clearInterval(countDown);
+      alert("Sorry you ran out of time... But you can try again!");
+      window.location.reload();
     }
   }, 1000);
 }
@@ -131,10 +130,9 @@ test.addEventListener("click", function (event) {
   else {
     //End of quiz
     test.setAttribute("class", "hide");
-    timer.setAttribute("class", "hide");
     submitBtn.removeAttribute("class", "hide");
-    scoreStore.push(secLeft);
-    localStorage.setItem("score", JSON.stringify(scoreStore));
+    clearInterval(countDown);
+    submitTitle.textContent = `Your score is ${secLeft - 10}`;
     console.log(secLeft);
   }
 });
@@ -146,14 +144,21 @@ startBtn.addEventListener("click", testTimer);
 currentQuestion();
 
 //Submit function
-submitTitle.textContent = `Your score is ${secLeft}`;
 
 subBtn.addEventListener("click", function () {
   var nameValue = subName.value;
 
   if (nameValue !== null) {
-    nameStore.push(nameValue);
-    localStorage.setItem("name", JSON.stringify(nameStore));
+    console.log(secLeft);
+    var score = {
+      score: secLeft - 10,
+      name: nameValue,
+    };
+    var existingValue = localStorage.getItem("score") || "[]";
+    console.log(existingValue);
+    var existingValueArr = JSON.parse(existingValue);
+    existingValueArr.push(score);
+    localStorage.setItem("score", JSON.stringify(existingValueArr));
     window.location.href = "./high-scores.html";
   }
 });

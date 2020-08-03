@@ -1,11 +1,21 @@
 var highScoreTable = document.getElementById("high-score-list");
-var scoreStore = JSON.parse(localStorage.getItem("score"));
-var nameStore = JSON.parse(localStorage.getItem("name"));
+var scoreStore = JSON.parse(localStorage.score);
+
+var scoreSorted = scoreStore.sort(function (a, b) {
+  return b.score - a.score;
+});
+
+var clearBtn = document.getElementById("clearBtn");
 
 window.onload = function () {
   if (localStorage !== null) {
-    for (var i = 0; i < localStorage.length; i += 2) {
-      highScoreTable.innerHTML += `<tr><td>${nameStore}</td><td>${scoreStore}</td></tr>`;
+    for (var i = 0; i < scoreStore.length; i++) {
+      highScoreTable.innerHTML += `<tr><td>${scoreStore[i].name}</td><td>${scoreStore[i].score}</td></tr>`;
     }
   }
 };
+
+clearBtn.addEventListener("click", function () {
+  localStorage.clear();
+  window.location.reload();
+});

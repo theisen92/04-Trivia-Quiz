@@ -29,3 +29,7 @@ The main challenge that I was running into during this project was using an obje
 I was able to figure out the array by doing some digging on full stack and youtube, which I feel is a lot cleaner.
 But I wasn't able to figure out the local storage stacking and didn't have time to sit down with a TA but will in the future
 So on the score page it just shows the latest score, but I might be able to update it later on.
+
+## Update
+
+I was able to sit down with the instructor Nate and the TA Johnny and they helpped me with the local storage problem and helped me understand what was causing the problem

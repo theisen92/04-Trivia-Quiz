@@ -129,6 +129,7 @@ test.addEventListener("click", function (event) {
   //End of test
   else {
     //End of quiz
+    timer.setAttribute("class", "hide");
     test.setAttribute("class", "hide");
     submitBtn.removeAttribute("class", "hide");
     clearInterval(countDown);
